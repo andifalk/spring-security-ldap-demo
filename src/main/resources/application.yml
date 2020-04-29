@@ -1,0 +1,14 @@
+spring:
+  ldap:
+    embedded:
+      port: 8389
+      ldif: classpath:test-server.ldif
+      base-dn: dc=novatec,dc=de
+
+logging:
+  level:
+    org:
+      springframework:
+        ldap: debug
+        security:
+          ldap: debug

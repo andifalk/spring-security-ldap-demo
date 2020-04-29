@@ -1,0 +1,93 @@
+dn: dc=novatec,dc=de
+objectclass: top
+objectclass: domain
+objectclass: extensibleObject
+dc: novatec
+
+dn: ou=groups,dc=novatec,dc=de
+objectclass: top
+objectclass: organizationalUnit
+ou: groups
+
+dn: ou=subgroups,ou=groups,dc=novatec,dc=de
+objectclass: top
+objectclass: organizationalUnit
+ou: subgroups
+
+dn: ou=people,dc=novatec,dc=de
+objectclass: top
+objectclass: organizationalUnit
+ou: people
+
+dn: ou=otherpeople,dc=novatec,dc=de
+objectclass: top
+objectclass: organizationalUnit
+ou: otherpeople
+
+dn: uid=alice,ou=people,dc=novatec,dc=de
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Alice Alison
+sn: Alison
+uid: alice
+givenName: Alice
+userPassword: {scrypt}$e0801$FBp/EIJo/q4Wb0bQJlqOpCw3cqBzAl6shIyPc2nH1JJy4j71QXZcLfIfYmIXv5Tv+2TpAHzi7o7JQO67UTwuJQ==$Ne4apqGG0z6R4r/WnnvPuTnTOmOq5ftMwTSsPDgEEjY=
+
+dn: uid=bob,ou=people,dc=novatec,dc=de
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Bob Builder
+sn: Builder
+uid: bob
+givenName: Bob
+userPassword: {argon2}$argon2id$v=19$m=4096,t=3,p=1$zo00wYwbFd116+sGs2UX9w$1c3GWLbRGCalCIfYZ9FaoxkFjpyTvOYXr9QXMObFZlQ
+
+dn: uid=joe,ou=otherpeople,dc=novatec,dc=de
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Joe Jackson
+sn: Jackson
+uid: joe
+givenName: Joe
+userPassword: {bcrypt}$2a$10$OXnzMiPF.cOOqszUlw8shepkNAQwhu3XYjH0qRpvJ/n2J97F9yOGK
+
+dn: uid=clara,ou=otherpeople,dc=novatec,dc=de
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Clara Cleartext
+sn: Cleartext
+uid: clara
+givenName: Clara
+userPassword: {noop}secret
+
+dn: cn=developers,ou=groups,dc=novatec,dc=de
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: developers
+ou: developer
+uniqueMember: uid=alice,ou=people,dc=novatec,dc=de
+uniqueMember: uid=bob,ou=people,dc=novatec,dc=de
+uniqueMember: uid=clara,ou=otherpeople,dc=novatec,dc=de
+
+dn: cn=managers,ou=groups,dc=novatec,dc=de
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: managers
+ou: manager
+uniqueMember: uid=alice,ou=people,dc=novatec,dc=de
+
+dn: cn=submanagers,ou=subgroups,ou=groups,dc=novatec,dc=de
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: submanagers
+ou: submanager
+uniqueMember: uid=alice,ou=people,dc=novatec,dc=de
+uniqueMember: uid=joe,ou=otherpeople,dc=novatec,dc=de
